@@ -1,77 +1,159 @@
 package com.parkit.parkingsystem.model;
 
-import java.util.Calendar;
 import java.util.Date;
 
+/**
+ *
+ * class that represents a parking ticket.
+ *
+ */
 public class Ticket {
-	private int id;
-	private ParkingSpot parkingSpot;
-	private String vehicleRegNumber;
-	private double price;
-	private Date inTime;
-	private Date outTime;
+  /**
+   * ticket id.
+   */
+  private int id;
+  /**
+   * parking spot for the ticket.
+   */
+  private ParkingSpot parkingSpot;
+  /**
+   * vehicle registration number of the vehicle parked.
+   */
+  private String vehicleRegNumber;
+  /**
+   * price.
+   */
+  private double price;
+  /**
+   * time of entry.
+   */
+  private Date inTime;
+  /**
+   * time of exit.
+   */
+  private Date outTime;
 
-	public int getId() {
-		return id;
-	}
+  /**
+   * ticket id getter.
+   *
+   * @return ticket number
+   */
+  public int getId() {
+    return id;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  /**
+   * ticket id setter.
+   *
+   * @param id ticket number
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public ParkingSpot getParkingSpot() {
-		return parkingSpot;
-	}
+  /**
+   * parking spot getter.
+   *
+   * @return parking spot of the ticket
+   */
+  public ParkingSpot getParkingSpot() {
+    return parkingSpot;
+  }
 
-	public void setParkingSpot(ParkingSpot parkingSpot) {
-		this.parkingSpot = parkingSpot;
-	}
+  /**
+   * parking spot setter.
+   *
+   * @param parkingSpot for the ticket
+   */
+  public void setParkingSpot(ParkingSpot parkingSpot) {
+    this.parkingSpot = parkingSpot;
+  }
 
-	public String getVehicleRegNumber() {
-		return vehicleRegNumber;
-	}
+  /**
+   * ticket vehicleRegNumber getter.
+   *
+   * @return vehicleRegNumber
+   */
+  public String getVehicleRegNumber() {
+    return vehicleRegNumber;
+  }
 
-	public void setVehicleRegNumber(String vehicleRegNumber) {
-		this.vehicleRegNumber = vehicleRegNumber;
-	}
+  /**
+   * ticket vehicleRegNumber setter.
+   *
+   * @param vehicleRegNumber
+   */
+  public void setVehicleRegNumber(String vehicleRegNumber) {
+    this.vehicleRegNumber = vehicleRegNumber;
+  }
 
-	public double getPrice() {
-		return price;
-	}
+  /**
+   * price getter.
+   *
+   * @return price
+   */
+  public double getPrice() {
+    return price;
+  }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+  /**
+   * price setter.
+   *
+   * @param price of ticket
+   */
+  public void setPrice(double price) {
+    this.price = price;
+  }
 
-	public Date getInTime() {
-		if (inTime != null)
-			return new Date(inTime.getTime());
-		else {
-			return null;
-		}
-	}
+  /**
+   * vehicle in time getter.
+   *
+   * @return as Date
+   */
+  public Date getInTime() {
+    if (inTime != null)
+      return new Date(inTime.getTime());
+    else {
+      return null;
+    }
+  }
 
-	public void setInTime(Date inTime) {
-		if (inTime != null)
-			this.inTime = new Date(inTime.getTime());
-		else {
-			this.inTime = null;
-		}
-	}
+  /**
+   * vehicle in time setter.
+   *
+   * @param inTime as Date
+   */
+  public void setInTime(Date inTime) {
+    if (inTime != null)
+      this.inTime = new Date(inTime.getTime());
+    else {
+      this.inTime = null;
+    }
+  }
 
-	public Date getOutTime() {
-		if (outTime != null)
-			return new Date(outTime.getTime());
-		else {
-			return null;
-		}
-	}
+  /**
+   * vehicle out time getter.
+   *
+   * @return as Date
+   */
+  public Date getOutTime() {
+    if (outTime != null)
+      return new Date(outTime.getTime());
+    else {
+      return null;
+    }
+  }
 
-	public void setOutTime(Date outTime) {
-		if (outTime != null)
-			this.outTime = new Date(outTime.getTime());
-		else {
-			this.outTime = null;
-		}
-	}
+  /**
+   * vehicle out time setter.
+   *
+   * @param outTime as Date
+   */
+  public void setOutTime(Date outTime) {
+    if (outTime != null)
+      this.outTime = new Date(outTime.getTime());
+    else {
+      this.outTime = null;
+    }
+  }
 }

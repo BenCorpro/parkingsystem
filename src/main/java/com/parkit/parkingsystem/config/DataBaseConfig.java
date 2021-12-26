@@ -5,57 +5,93 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * DatabaseConfig class: connection and interaction with database.
+ *
+ */
 public class DataBaseConfig {
 
-	private static final Logger logger = LogManager.getLogger("DataBaseConfig");
+  /**
+   * get a Logger from LogManager.
+   */
+  private static final Logger LOGGER = LogManager.getLogger("DataBaseConfig");
 
-	public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
+  /**
+   * Opening connection with database.
+   *
+   * @return connection
+   * @throws ClassNotFoundException
+   * @throws SQLException
+   * @throws IOException
+   */
+  public Connection getConnection()
+      throws ClassNotFoundException, SQLException, IOException {
 
-		try (FileInputStream inputProp = new FileInputStream("src/main/resources/log4j.properties");) {
-			Properties properties = new Properties();
-			properties.load(inputProp);
-			String url = properties.getProperty("urlprod");
-			String user = properties.getProperty("user");
-			String password = properties.getProperty("password");
-			logger.info("Create DB connection");
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			return DriverManager.getConnection(url, user, password);
-		}
-	}
+    try (FileInputStream inputProp =
+        new FileInputStream("src/main/resources/log4j.properties");) {
+      Properties properties = new Properties();
+      properties.load(inputProp);
+      String url = properties.getProperty("urlprod");
+      String user = properties.getProperty("user");
+      String password = properties.getProperty("password");
+      LOGGER.info("Create DB connection");
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      return DriverManager.getConnection(url, user, password);
+    }
+  }
 
-	public void closeConnection(Connection con) {
-		if (con != null) {
-			try {
-				con.close();
-				logger.info("Closing DB connection");
-			} catch (SQLException e) {
-				logger.error("Error while closing connection", e);
-			}
-		}
-	}
+  /**
+   * closing database connection.
+   *
+   * @param con connection to be closed
+   */
+  public void closeConnection(Connection con) {
+    if (con != null) {
+      try {
+        con.close();
+        LOGGER.info("Closing DB connection");
+      } catch (SQLException e) {
+        LOGGER.error("Error while closing connection", e);
+      }
+    }
+  }
 
-	public void closePreparedStatement(PreparedStatement ps) {
-		if (ps != null) {
-			try {
-				ps.close();
-				logger.info("Closing Prepared Statement");
-			} catch (SQLException e) {
-				logger.error("Error while closing prepared statement", e);
-			}
-		}
-	}
+  /**
+   * closing prepared statement.
+   *
+   * @param ps prepared statement to be closed
+   */
+  public void closePreparedStatement(PreparedStatement ps) {
+    if (ps != null) {
+      try {
+        ps.close();
+        LOGGER.info("Closing Prepared Statement");
+      } catch (SQLException e) {
+        LOGGER.error("Error while closing prepared statement", e);
+      }
+    }
+  }
 
-	public void closeResultSet(ResultSet rs) {
-		if (rs != null) {
-			try {
-				rs.close();
-				logger.info("Closing Result Set");
-			} catch (SQLException e) {
-				logger.error("Error while closing result set", e);
-			}
-		}
-	}
+  /**
+   * closing resultset.
+   *
+   * @param rs resultset to be closed
+   */
+  public void closeResultSet(ResultSet rs) {
+    if (rs != null) {
+      try {
+        rs.close();
+        LOGGER.info("Closing Result Set");
+      } catch (SQLException e) {
+        LOGGER.error("Error while closing result set", e);
+      }
+    }
+  }
 }
