@@ -1,6 +1,17 @@
 package com.parkit.parkingsystem.constants;
 
+/**
+ * Enum of vehicle types.
+ *
+ */
 public enum ParkingType {
-    CAR,
-    BIKE
+
+  /**
+   * parking spot for car.
+   */
+  CAR,
+  /**
+   * parking spot for bike.
+   */
+  BIKE
 }
